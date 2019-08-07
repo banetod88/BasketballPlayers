@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotNet514072019", "dotNet514072019\dotNet514072019.csproj", "{E655F822-ECAC-433F-B9F1-203B817CAC21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotNet514072019.Tests", "dotNet514072019.Tests\dotNet514072019.Tests.csproj", "{C3770065-CFBD-47F8-AB9F-4E6075689126}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E655F822-ECAC-433F-B9F1-203B817CAC21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E655F822-ECAC-433F-B9F1-203B817CAC21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E655F822-ECAC-433F-B9F1-203B817CAC21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E655F822-ECAC-433F-B9F1-203B817CAC21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3770065-CFBD-47F8-AB9F-4E6075689126}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3770065-CFBD-47F8-AB9F-4E6075689126}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3770065-CFBD-47F8-AB9F-4E6075689126}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3770065-CFBD-47F8-AB9F-4E6075689126}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {140B880F-52FD-4AD4-A7E1-97BD09421BF2}
+	EndGlobalSection
+EndGlobal

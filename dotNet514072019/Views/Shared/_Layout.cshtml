@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/scripts/stilovi.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div class="headerWrap">
+        <header>
+            <h1>Košarkaši</h1>
+            <nav>
+                <a href="#" id="pocetnaPrijava" style="display:inline-block;">Prijava</a>
+                <a href="#" id="pocetnaRegistracija" style="display:inline-block;">Registracija</a>
+                <a href="#" id="povratakIzArhiveLink" style="display:none;">&lt;&lt;Prethodna strana</a>
+                <a href="sadrzaj/arhiva" id="arhivaLink" style="display:none;">Arhivirani članci</a>
+                <a href="#" id="odjavise" style="display:none;">Odjavi se</a>
+            </nav>
+
+            <!--FORMA ZA PRIJAVU-->
+            <div style="display:none" id="prijava">
+                <form method="post" action="post/" id="prijavaForm">
+                    <h3>Prijava</h3>
+                    <div class="form-group" class="inputWrapper">
+                        <label class="col-sm-4 control-label">Email</label>
+                        <input class="form-control" type="text" id="priEmail" />
+                    </div>
+                    <div class="form-group" class="inputWrapper">
+                        <label class="col-sm-4 control-label">Lozinka</label>
+                        <input class="form-control" type="password" id="priLoz" />
+                    </div>
+                    <div class="buttonWrapperPrijava">
+                        <button type="submit" class="btn btn-default" id="btnPrijava_uPrijavi">Prijava</button>
+                        <button type="button" class="btn btn-default" id="odustajanjePrijava">Odustajanje</button>
+
+                    </div>
+                </form>
+            </div>
+
+            <!--FORMA ZA REGISTRACIJU-->
+            <div class="form-horizontal" style="display:none;" id="registracija">
+                <form method="post" action="post/" id="registracijaForma">
+                    <h3>Registracija</h3>
+                    <div class="form-group" class="inputWrapper">
+                        <label class="col-sm-4 control-label">Email</label>
+                        <input class="form-control" type="text" id="regEmail" />
+                    </div>
+                    <div class="form-group" class="inputWrapper">
+                        <label class="col-sm-4 control-label">Lozinka</label>
+                        <input class="form-control" type="password" id="regLoz" />
+                    </div>
+                    <div class="form-group" class="inputWrapper">
+                        <label class="col-sm-4 control-label">Potvrdi Lozinku</label>
+                        <input class="form-control" type="password" id="regLoz2" />
+                    </div>
+                    <div class="buttonWrapperRegistracija">
+                        <button type="submit" class="btn btn-default" id="btnRegistracija_uRegistraciji">Registracija</button>
+                        <button type="button" class="btn btn-default" id="odustajanjeRegistracija">Odustajanje</button>
+                    </div>
+                </form>
+            </div>
+
+        </header>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+    <!--FORMA ZA ODJAVU    OBRISATI POSLE
+    <div class="clearfix" style="display:none;" id="odjava">
+        <div class="clearfix">
+            <h3>Odjava</h3>
+            <button class="btn btn-default" id="odjavise">Odjava</button>
+        </div>
+    </div>-->
+
+    <div class="mainContainer">
+        <div id="arhivaContainer" style="display:none;"></div>
+        <main>
+            <div id="background1"></div>
+            @RenderBody()
+            <div id="background2"></div>
+        </main>
+        <hr />
+        <footer>
+            <div id="footerWrapper"><p>&copy; <span> @DateTime.Now.Year </span> </p><p>Basketball Application</p></div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @* @Scripts.Render("~/bundles/bootstrap")*@
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+
+
+

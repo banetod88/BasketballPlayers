@@ -1,0 +1,83 @@
+﻿@section Scripts {
+    @Scripts.Render("~/Scripts/Skripta1.js")
+    @Scripts.Render("~/Scripts/Skripta2.js")
+}
+
+
+<div id="info"></div>
+
+<div id="podaci">
+    <!--FORMA ZA PRIKAZ ARHIVE
+    <div id="divArhivaLink" style="display:none;">
+        <a href="sadrzaj/arhiva" id="arhivaLink">Arhivirani članci</a>
+    </div>
+    <div id="arhiva" style="display:none;" class="clearfix">
+
+    </div>-->
+
+
+    <!--wrapper pretraga i dodavanje-->
+    <div id="pretraga_dodavanjeWrapper" style="display:none;">
+
+        <!--FORMA ZA PRETRAGU-->
+        <div id="pretragaWrap">
+            <div id="pretraga" style="display:none;">
+                <form method="get" action="api/pretraga" id="pretragaForm">
+                    <h3>Pretraga po broju utakmica</h3>
+                    <p><label>Najmanje:</label><input type="text" id="pretragaNajmanje" /></p>
+                    <p><label>Najviše:</label><input type="text" id="pretragaNajvise" /></p>
+                    <input type="submit" value="Pretraga" />
+                </form>
+            </div>
+        </div>
+
+
+        <!--FORMA ZA DODAVANJE-->
+        <div id="dodavanjeWrap">
+            <div id="dodavanje" style="display:none;">
+                <form method="post" action="post/" id="dodavanjeForm">
+                    <h3>Dodavanje i izmena košarkaša</h3>
+                    <p><label>Ime i prezime:</label><input type="text" id="izmenaImeIPrezime" /></p>
+                    <p><label>Godina rođenja:</label><input type="text" id="izmenaGodinaRodjenja" /></p>
+                    <p><label>Broj utakmica:</label><input type="text" id="izmenaBrojUtakmica" /></p>
+                    <p><label>Prosečno poena:</label><input type="text" id="izmenaBrojPoena" /></p>
+                    <p><label>Košarkaški klub:</label><select id="dodavanjeKlub"></select></p>
+
+                    <input type="submit" value="Pošalji" id="izmenaKosarkasa" />
+                    <input type="button" value="Odustajanje" id="odustajanjeIzmenaKosarkasa" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--FORMA ZA TABELU I SADRZAJ-->
+    <div style="display:block;" id="tabelaSadrzaj"></div>
+</div>
+
+
+
+
+
+
+<!--FORMA ZA STUBCE I SADRZAJ-->
+<div id="clanci">
+    <div class="clearfix" style="display:block;" id="stupciSadrzaj">
+        <div class="stupciElement">
+            <div class="stupciSlika"></div>
+            <div class="stupciTextNaslov" style="display:none"><input type="text" class="inputStupciTextNaslov" /></div>
+            <div class="stupciText">
+
+                <h3></h3>
+                <p></p>
+            </div>
+            <div class="stupciDugmici" style="display:none"></div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="dno"></div>
+
+
+
+
