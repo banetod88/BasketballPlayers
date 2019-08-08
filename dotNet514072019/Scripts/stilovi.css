@@ -21,23 +21,10 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-/* ORIGINALNI CSS
-body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
 
-/* Set padding to keep content from hitting the edges 
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-/* Set width on the form input elements since they're 100% wide by default */
 input,select,textarea {
     max-width: 200px;
 }
-
 
 body{
 	margin: 0;
@@ -105,10 +92,7 @@ nav a:hover{
     margin: 2px;
 }
 
-/*.stupciElement*/ img{
-	/*
-	max-height: 200px;
-	max-width: : 250px;*/
+img{
 	object-fit: contain;
 }
 
@@ -211,24 +195,25 @@ table {
 	font-weight: bold; 
 	border-left: 1px solid #A3A3A3; 
 } 
-	.datagrid table thead th:first-child { 
-		border: none; }
+	
+.datagrid table thead th:first-child { 
+	border: none; }
 
-	.datagrid table tbody td { 
-		color: #7D7D7D; 
-		border-left: 1px solid #DBDBDB;
-		font-size: 12px;
-		font-weight: normal; }
+.datagrid table tbody td { 
+	color: #7D7D7D; 
+	border-left: 1px solid #DBDBDB;
+	font-size: 12px;
+	font-weight: normal; }
 
-	.datagrid table tbody .alt td { 
-		background: #EBEBEB; 
-		color: #7D7D7D; }
+.datagrid table tbody .alt td { 
+	background: #EBEBEB; 
+	color: #7D7D7D; }
 
-	.datagrid table tbody td:first-child { 
-		border-left: none; }
+.datagrid table tbody td:first-child { 
+	border-left: none; }
 
-	.datagrid table tbody tr:last-child td { 
-		border-bottom: none; }
+.datagrid table tbody tr:last-child td { 
+	border-bottom: none; }
 
 
 

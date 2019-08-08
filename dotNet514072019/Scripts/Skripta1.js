@@ -115,8 +115,8 @@ $(document).ready(function () {
 		$.ajax({
 			"type": "POST",
 			"url": 'http://' + host + "/Token",//  /Token -> on je definisan u StartUp.Auth.cs u 38 liniji koda=>TokenEndpointPath = new PathString("/Token") , i uvek cu gadajti njega
-			"data": dataForSending, //ovo smo definisali u redu iznad
-			"headers": {}     //headers je u ovom slucaju prazan
+			"data": dataForSending, 
+			"headers": {}     
 		})
 		.done(function(data){
 			console.log(data);
@@ -155,51 +155,56 @@ $(document).ready(function () {
 			$("#tabelaSadrzaj").css("display", "block");
 			$("#pretraga").css("display", "none");
 			$("#odjava").css("display", "none");
+			$("#odjavise").css("display", "none");
+			$("#arhivaLink").css("display", "none");
 			$("#dodavanje").css("display", "none");
+			$("#pretraga_dodavanjeWrapper").css("display", "none");
+			$("#pocetnaPrijava, #pocetnaRegistracija").css("display", "inline-block");
+		dodavanjeSadrzaja();
         refreshTable();
     });
 
 	$("#pretraga").submit(function(e){
 			e.preventDefault();
-			var minBrUt=$("#pretragaNajmanje").val();//preuzmi vrednost iz input polja
-			var maxBrUt=$("#pretragaNajvise").val();//preuzmi vrednost iz input polja
+			var minBrUt=$("#pretragaNajmanje").val();
+			var maxBrUt=$("#pretragaNajvise").val();
 
-			var dataForSending = { //pripremi podatke za slanje
-			"najmanje" : minBrUt,  //ovo je po defaultu i uzima se ovako zdravo za gotovo
-			"najvise" : maxBrUt   //ovo je po defaultu i uzima se ovako zdravo za gotovo
+			var dataForSending = { 
+			"najmanje" : minBrUt,  
+			"najvise" : maxBrUt   
 			}
 		
 			$.ajax({
 			"type": "POST",
 			"url": 'http://' + host + "/api/pretraga",//  /Token -> on je definisan u StartUp.Auth.cs u 38 liniji koda=>TokenEndpointPath = new PathString("/Token") , i uvek cu gadajti njega
-			"data": dataForSending, //ovo smo definisali u redu iznad
-			"headers":{Authorization: "Bearer "+ token}     //headers je u ovom slucaju prazan
+			"data": dataForSending, 
+			"headers":{Authorization: "Bearer "+ token}   
 
 			}).done(function(data){
 
 			var $container = $("#tabelaSadrzaj");
         	$container.empty(); 
 
-        	var div = $("<div></div>");
+        	var div = $("<div id=tabelaWrapper></div>");
             var h1 = $("<h1>Košarkaši</h1>");
             div.append(h1);
-            // ispis tabele
-            var table = $("<table class='table table-bordered table-sm event-table'></table>");
-            var header = $("<tr><th>Ime i prezime</th><th>Godina rođenja</th><th>Klub</th><th>Utakmice</th><th>Poeni</th></tr>");
+
+            var table = $("<table></table>"); //class='table table-bordered table-sm event-table'
+	            if(token){
+					var header = $("<tr><th>Ime i prezime</th><th>Godina rođenja</th><th>Klub</th><th>Utakmice</th><th>Poeni</th><th>Akcija-Obriši</th><th>Akcija-Izmeni</th></tr>");
+	            }else{var header = $("<tr><th>Ime i prezime</th><th>Godina rođenja</th><th>Klub</th><th>Utakmice</th><th>Poeni</th></tr>");}
+            
             table.append(header);
             for (i=0; i<data.length; i++)
             {
-                // prikazujemo novi red u tabeli
+
                 var row = "<tr>";
-                // prikaz podataka
                 var displayData = "<td>" + data[i].KosarkasImeIPrezime + "</td><td>" + data[i].KosarkasGodinaRodjenja + "</td><td>" + data[i].kosarkaskiKlub.KosarkaskiKlubNaziv + "</td><td>" + data[i].KosarkasBrojUtakmica  + "</td><td>" + data[i].KosarkasProsecanBrojPoena  + "</td>";
-                // prikaz dugmadi za izmenu i brisanje
+
 	                if(token){
-
-		                var stringId = data[i].KosarkasId.toString();
-
-	  	               var displayDelete = "<td><button id=btnDelete name=" + stringId + ">Obrisi</button></td>";
-		               var displayEdit = "<td><button id=btnEdit name=" + stringId + ">Izmena</button></td>";
+		               var stringId = data[i].KosarkasId.toString();
+	  	               var displayDelete = "<td><button id=btnDelete name=" + stringId + ">Obriši</button></td>";
+		               var displayEdit = "<td><button id=btnEdit name=" + stringId + ">Izmeni</button></td>";
 		               row += displayData + displayDelete + displayEdit + "</tr>";  
 		                 
 					}else{
@@ -211,6 +216,8 @@ $(document).ready(function () {
 
 			div.append(table)
             $container.append(div);
+
+
 		}).fail(function(){alert("Ne mogu dobaviti kosarkaše");})
 	});
 
@@ -344,7 +351,7 @@ $(document).ready(function () {
 		$("#dodavanjeKlub").val('');
 		// osvezavam
 		dobaviKosarkase();
-		//$("#btnAuthors").trigger("click");//@@@@@@@@@@@@@@@@@@@2PRILAGODITI OVOM ZADATKU///cemu ovo sluzi?????
+		//$("#btnAuthors").trigger("click");//
 	};
 
 	$("#odustajanjeIzmenaKosarkasa").click(function(){
@@ -353,7 +360,7 @@ $(document).ready(function () {
 
 
 	$("#dodavanjeForm").submit(function(e){
-		e.preventDefault();// sprecavanje default akcije forme
+		e.preventDefault();
 		if(token){
 			var izmenaImeIPrezime = $("#izmenaImeIPrezime").val();
 			var izmenaGodinaRodjenja = $("#izmenaGodinaRodjenja").val();
@@ -434,12 +441,12 @@ $(document).ready(function () {
 
         $.ajax({    
             type: "POST",
-            url: 'http://' + host + "/api/Account/Register",//NA TAJ URL SALJE PODATKE....
+            url: 'http://' + host + "/api/Account/Register",
             data: sendData  
  
         }).done(function (data) {
             $("#info").append("Uspešna registracija. Možete se prijaviti na sistem.");
-            $("#prijava").css("display", "block"); //POJAVLJUJE SE ZAGLAVLJE ZA PRIJAVU
+            $("#prijava").css("display", "block"); 
         	$("#registracija").css("display", "none");
 
         }).fail(function (data) {
@@ -448,15 +455,14 @@ $(document).ready(function () {
         });
     });
 
-//#######  RAD SA SADRZAJEM   TREBA ZAVRSITIIIII
-
+//#######  RAD SA SADRZAJEM  
 
 	$("#posaljiIzmeneSadrzaja").click(function(){
 		//e.preventDefault();
 		posaljiIzmeneSadrzaja();
 	});
 
-//#######  RAD SA SADRZAJEM   TREBA ZAVRSITIIIII
+//#######  RAD SA SADRZAJEM   
 
 
 	function dodavanjeSadrzaja(){
